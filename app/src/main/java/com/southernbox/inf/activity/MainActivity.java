@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity
     private final static String TYPE_HISTORY = "history";
     private final static String TYPE_CASTLE = "castle";
 
-    private static String currentFirstType = TYPE_PERSON;
+    private static String currentType = TYPE_PERSON;
     private List<TabDTO> tabList;
     private ArrayList<MainFragment> fragmentList = new ArrayList<>();
 
@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity
         initDrawerLayout();
         initNavigationView();
         initRefreshLayout();
-        initViewPager(currentFirstType);
+        initViewPager(currentType);
     }
 
     /**
@@ -265,8 +265,8 @@ public class MainActivity extends BaseActivity
         Call<List<ContentDTO>> call = requestServes.getContent();
         call.enqueue(new Callback<List<ContentDTO>>() {
             @Override
-            public void onResponse(Call<List<ContentDTO>> call,
-                                   retrofit2.Response<List<ContentDTO>> response) {
+            public void onResponse(@NonNull Call<List<ContentDTO>> call,
+                                   @NonNull retrofit2.Response<List<ContentDTO>> response) {
                 binding.appBar.swipeRefreshLayout.setRefreshing(false);
                 List<ContentDTO> list = response.body();
                 if (list != null) {
@@ -283,7 +283,7 @@ public class MainActivity extends BaseActivity
             }
 
             @Override
-            public void onFailure(Call<List<ContentDTO>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<ContentDTO>> call, @NonNull Throwable t) {
                 binding.appBar.swipeRefreshLayout.setRefreshing(false);
                 ToastUtil.show(mContext, "网络连接失败");
             }
@@ -461,33 +461,33 @@ public class MainActivity extends BaseActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_person:
-                if (!TYPE_PERSON.equals(currentFirstType)) {
-                    currentFirstType = TYPE_PERSON;
-                    initViewPager(currentFirstType);
+                if (!TYPE_PERSON.equals(currentType)) {
+                    currentType = TYPE_PERSON;
+                    initViewPager(currentType);
                     binding.appBar.mainToolbar.setTitle(getResources().getString(R.string.person));
                 }
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_house:
-                if (!TYPE_HOUSE.equals(currentFirstType)) {
-                    currentFirstType = TYPE_HOUSE;
-                    initViewPager(currentFirstType);
+                if (!TYPE_HOUSE.equals(currentType)) {
+                    currentType = TYPE_HOUSE;
+                    initViewPager(currentType);
                     binding.appBar.mainToolbar.setTitle(getResources().getString(R.string.house));
                 }
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_history:
-                if (!TYPE_HISTORY.equals(currentFirstType)) {
-                    currentFirstType = TYPE_HISTORY;
-                    initViewPager(currentFirstType);
+                if (!TYPE_HISTORY.equals(currentType)) {
+                    currentType = TYPE_HISTORY;
+                    initViewPager(currentType);
                     binding.appBar.mainToolbar.setTitle(getResources().getString(R.string.history));
                 }
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_castles:
-                if (!TYPE_CASTLE.equals(currentFirstType)) {
-                    currentFirstType = TYPE_CASTLE;
-                    initViewPager(currentFirstType);
+                if (!TYPE_CASTLE.equals(currentType)) {
+                    currentType = TYPE_CASTLE;
+                    initViewPager(currentType);
                     binding.appBar.mainToolbar.setTitle(getResources().getString(R.string.castle));
                 }
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
