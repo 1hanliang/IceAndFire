@@ -494,11 +494,7 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.nav_night:
                 boolean isChecked = switchCompat.isChecked();
-                if (isChecked) {
-                    switchCompat.setChecked(false);
-                } else {
-                    switchCompat.setChecked(true);
-                }
+                switchCompat.setChecked(!isChecked);
                 break;
         }
         return true;
