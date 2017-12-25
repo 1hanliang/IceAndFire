@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "com.southernbox.inf.activity"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -24,7 +24,7 @@ android {
     return void
 }
 
-def SUPPORT_LIB_VERSION = '25.3.1'
+def SUPPORT_LIB_VERSION = '26.1.0'
 def RETROFIT_VERSION = '2.3.0'
 
 dependencies {
@@ -42,5 +42,5 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
     compile "com.squareup.retrofit2:converter-scalars:${RETROFIT_VERSION}"
     compile "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}"
-    compile 'io.reactivex.rxjava2:rxjava:2.0.4'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.5'
 }
